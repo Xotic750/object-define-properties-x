@@ -1,6 +1,6 @@
 /**
  * @file Sham for Object.defineProperties
- * @version 2.0.0
+ * @version 2.0.1
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -9,7 +9,7 @@
 
 'use strict';
 
-var forEach = require('for-each');
+var forEach = require('array-for-each-x');
 var $keys = require('object-keys-x');
 var $defineProperty = require('object-define-property-x');
 var $defineProperties = Object.defineProperties;
@@ -70,10 +70,12 @@ if (Boolean($defineProperties) === false || definePropertiesFallback) {
 }
 
 /**
- * This method defines new or modifies existing properties directly on an object, returning the object.
+ * This method defines new or modifies existing properties directly on an
+ * object, returning the object.
  *
  * @param {Object} object - The object on which to define or modify properties.
- * @param {Object} properties - An object whose own enumerable properties constitute descriptors for the
+ * @param {Object} properties - An object whose own enumerable properties
+ *  constitute descriptors for the
  * properties to be defined or modified.
  * @returns {Object} The object that was passed to the function.
  * @example
