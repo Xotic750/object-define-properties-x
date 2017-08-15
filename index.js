@@ -1,6 +1,6 @@
 /**
  * @file Sham for Object.defineProperties
- * @version 2.0.3
+ * @version 2.0.4
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
