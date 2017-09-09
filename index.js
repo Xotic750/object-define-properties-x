@@ -1,6 +1,6 @@
 /**
  * @file Sham for Object.defineProperties
- * @version 2.0.4
+ * @version 3.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -10,64 +10,20 @@
 'use strict';
 
 var forEach = require('array-for-each-x');
-var $keys = require('object-keys-x');
-var $defineProperty = require('object-define-property-x');
-var $defineProperties = Object.defineProperties;
-var definePropertiesFallback;
+var objectKeys = require('object-keys-x');
+var defineProperty = require('object-define-property-x');
+var getOPS = require('get-own-property-symbols-x');
+var filter = require('array-filter-x');
+var toObject = require('to-object-x');
+var propertyIsEnumerable = require('property-is-enumerable-x');
+var assertIsObject = require('assert-is-object-x');
+var concat = Array.prototype.concat;
 
-// ES5 15.2.3.6
-// http://es5.github.com/#x15.2.3.6
-
-// Patch for WebKit and IE8 standard mode
-// Designed by hax <hax.github.com>
-// related issue: https://github.com/es-shims/es5-shim/issues#issue/5
-// IE8 Reference:
-//     http://msdn.microsoft.com/en-us/library/dd282900.aspx
-//     http://msdn.microsoft.com/en-us/library/dd229916.aspx
-// WebKit Bugs:
-//     https://bugs.webkit.org/show_bug.cgi?id=36423
-
-var doesDefinePropertyWork = function _doesDefinePropertyWork(object) {
-  try {
-    $defineProperty(object, 'sentinel', {});
-    return 'sentinel' in object;
-  } catch (exception) {
-    return false;
-  }
+var getKeys = function _getKeys(obj) {
+  return concat.call(objectKeys(obj), filter(getOPS(obj), function (sym) {
+    return propertyIsEnumerable(obj, sym);
+  }));
 };
-
-// check whether defineProperty works if it's given. Otherwise,
-// shim partially.
-if ($defineProperty) {
-  // eslint-disable-next-line id-length
-  var definePropertyWorksOnObject = doesDefinePropertyWork({});
-  var definePropertyWorksOnDom = typeof document === 'undefined' || doesDefinePropertyWork(document.createElement('div'));
-  if (definePropertyWorksOnObject === false || definePropertyWorksOnDom === false) {
-    definePropertiesFallback = Object.defineProperties;
-  }
-}
-
-// ES5 15.2.3.7
-// http://es5.github.com/#x15.2.3.7
-if (Boolean($defineProperties) === false || definePropertiesFallback) {
-  $defineProperties = function defineProperties(object, properties) {
-    // make a valiant attempt to use the real defineProperties
-    if (definePropertiesFallback) {
-      try {
-        return definePropertiesFallback.call(Object, object, properties);
-      } catch (exception) {
-        // try the shim if the real one doesn't work
-      }
-    }
-
-    forEach($keys(properties), function (property) {
-      if (property !== '__proto__') {
-        $defineProperty(object, property, properties[property]);
-      }
-    });
-    return object;
-  };
-}
 
 /**
  * This method defines new or modifies existing properties directly on an
@@ -94,4 +50,14 @@ if (Boolean($defineProperties) === false || definePropertiesFallback) {
  *   // etc. etc.
  * });
  */
-module.exports = $defineProperties;
+module.exports = function defineProperties(object, properties) {
+  assertIsObject(object);
+  var props = toObject(properties);
+  forEach(getKeys(props), function (property) {
+    if (property !== '__proto__') {
+      defineProperty(object, property, props[property]);
+    }
+  });
+
+  return object;
+};

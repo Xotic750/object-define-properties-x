@@ -23,17 +23,17 @@
 ## object-define-properties-x
 Sham for Object.defineProperties
 
-**Version**: 2.0.4  
+**Version**: 3.0.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 <a name="exp_module_object-define-properties-x--module.exports"></a>
 
-### `module.exports` ⇒ <code>Object</code> ⏏
+### `module.exports(object, properties)` ⇒ <code>Object</code> ⏏
 This method defines new or modifies existing properties directly on an
 object, returning the object.
 
-**Kind**: Exported member  
+**Kind**: Exported function  
 **Returns**: <code>Object</code> - The object that was passed to the function.  
 
 | Param | Type | Description |
