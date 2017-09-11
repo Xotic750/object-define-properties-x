@@ -36,6 +36,13 @@ var itHasCompPropNames = hasSymbols && hasComputedPropNames ? it : xit;
 var doc = typeof document !== 'undefined' && document;
 var itHasDoc = doc ? it : xit;
 
+var testObj = Object.defineProperty({}, 'foo', {
+  value: true
+});
+
+var hasNonEnumerable = Object.keys(testObj).length === 0 && testObj.foo === true;
+var itHasNonEnumerable = hasNonEnumerable ? it : xit;
+
 describe('defineProperties', function () {
   var obj;
 
@@ -229,5 +236,35 @@ describe('defineProperties', function () {
     });
 
     expect(div.blah).toBe(1);
+  });
+
+  itHasNonEnumerable('non-enumerable props should be ignored', function () {
+    obj = {};
+    var props = {
+      foo: {
+        value: true
+      }
+    };
+
+    Object.defineProperty(props, 'blah', {
+      value: {
+        value: true
+      }
+    });
+
+    expect(props.foo).toEqual({
+      value: true
+    });
+
+    expect(props.blah).toEqual({
+      value: true
+    });
+
+    defineProperties(obj, props);
+
+    expect(has.call(obj, 'foo')).toBe(true);
+    expect(obj.foo).toBe(true);
+    expect(has.call(obj, 'blah')).toBe(false);
+    expect(obj.blah).toBe(void 0);
   });
 });
