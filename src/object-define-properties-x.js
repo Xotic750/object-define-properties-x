@@ -1,5 +1,5 @@
 /**
- * @file Sham for Object.defineProperties
+ * @file Sham for Object.defineProperties.
  * @version 4.2.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
@@ -7,23 +7,21 @@
  * @module object-define-properties-x
  */
 
-'use strict';
-
-var forEach = require('array-for-each-x');
-var defineProperty = require('object-define-property-x');
-var toObject = require('to-object-x');
-var assertIsObject = require('assert-is-object-x');
-var getKeys = require('get-own-enumerable-keys-x');
+const forEach = require('array-for-each-x');
+const defineProperty = require('object-define-property-x');
+const toObject = require('to-object-x');
+const assertIsObject = require('assert-is-object-x');
+const getKeys = require('get-own-enumerable-keys-x');
 
 /**
  * This method defines new or modifies existing properties directly on an
  * object, returning the object.
  *
- * @param {Object} object - The object on which to define or modify properties.
- * @param {Object} properties - An object whose own enumerable properties
+ * @param {object} object - The object on which to define or modify properties.
+ * @param {object} properties - An object whose own enumerable properties
  *  constitute descriptors for the
  * properties to be defined or modified.
- * @returns {Object} The object that was passed to the function.
+ * @returns {object} The object that was passed to the function.
  * @example
  * var defineProperties = require('object-define-properties-x');
  *
@@ -42,8 +40,8 @@ var getKeys = require('get-own-enumerable-keys-x');
  */
 module.exports = function defineProperties(object, properties) {
   assertIsObject(object);
-  var props = toObject(properties);
-  forEach(getKeys(props), function (property) {
+  const props = toObject(properties);
+  forEach(getKeys(props), function(property) {
     if (property !== '__proto__') {
       defineProperty(object, property, props[property]);
     }
