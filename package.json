@@ -51,7 +51,7 @@
   "dependencies": {
     "array-for-each-x": "^3.0.1",
     "assert-is-object-x": "^3.0.1",
-    "get-own-enumerable-keys-x": "^1.2.0",
+    "get-own-enumerable-keys-x": "^2.0.0",
     "object-define-property-x": "^5.0.0",
     "to-object-x": "^2.0.1"
   },
