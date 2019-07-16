@@ -68,24 +68,24 @@ describe('defineProperties', function() {
   });
 
   it('is a function', function() {
-    expect(typeof defineProperties).toBe('function');
+expect.assertions(1);expect(typeof defineProperties).toBe('function');
   });
 
   it('should be setable', function() {
-    obj.name = 'Other';
+expect.assertions(1);obj.name = 'Other';
     expect(obj.name).toBe('Other');
     expect(obj.number).toBe(1234);
   });
 
   it('should define the constructor property', function() {
-    const target = {};
+expect.assertions(1);const target = {};
     const newProperties = {constructor: {value: 'new constructor'}};
     defineProperties(target, newProperties);
     expect(target.constructor).toBe('new constructor');
   });
 
   it('should return the parent initial value', function() {
-    const child = Object.create(obj, {});
+expect.assertions(1);const child = Object.create(obj, {});
 
     expect(child.name).toBe('Testing');
     expect(child.number).toBe(1234);
@@ -94,7 +94,7 @@ describe('defineProperties', function() {
   });
 
   it('should not override the parent value', function() {
-    const child = Object.create(obj, {});
+expect.assertions(1);const child = Object.create(obj, {});
 
     defineProperties(child, {
       name: {
@@ -107,7 +107,7 @@ describe('defineProperties', function() {
   });
 
   it('should return the target object', function() {
-    const child = Object.create(obj, {});
+expect.assertions(1);const child = Object.create(obj, {});
 
     const ret = defineProperties(child, {
       name: {
@@ -119,28 +119,28 @@ describe('defineProperties', function() {
   });
 
   it('should throw error for non object', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(42, {
         name: {
           value: 'Other',
         },
       });
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   it('should not throw error for empty descriptor', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
           name: {},
         },
       );
-    }).not.toThrow();
+    }).not..toThrowErrorMatchingSnapshot();
   });
 
   it('should throw error if getter is not a function', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
@@ -149,11 +149,11 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   it('should throw error if getter and value defined', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
@@ -163,11 +163,11 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   it('should throw error if getter and writeable is truthy', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
@@ -177,11 +177,11 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   it('should throw error if setter is not a function', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
@@ -190,11 +190,11 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   it('should throw error if setter and value defined', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
@@ -204,11 +204,11 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   it('should throw error if setter and writeable is truthy', function() {
-    expect(function() {
+expect.assertions(1);expect(function() {
       defineProperties(
         {},
         {
@@ -218,7 +218,7 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   itHasAccessors('should not throw error if has accessers', function() {
@@ -244,7 +244,7 @@ describe('defineProperties', function() {
           },
         },
       );
-    }).toThrow();
+    })..toThrowErrorMatchingSnapshot();
   });
 
   itHasCompPropNames('works with Symbols', function() {
