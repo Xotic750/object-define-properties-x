@@ -7,11 +7,12 @@
  * @module object-define-properties-x
  */
 
-const forEach = require('array-for-each-x');
-const defineProperty = require('object-define-property-x');
-const toObject = require('to-object-x');
-const assertIsObject = require('assert-is-object-x');
-const getKeys = require('get-own-enumerable-keys-x');
+import forEach from 'array-for-each-x';
+
+import defineProperty from 'object-define-property-x';
+import toObject from 'to-object-x';
+import assertIsObject from 'assert-is-object-x';
+import getKeys from 'get-own-enumerable-keys-x';
 
 /**
  * This method defines new or modifies existing properties directly on an
@@ -38,7 +39,7 @@ const getKeys = require('get-own-enumerable-keys-x');
  *   // etc. etc.
  * });
  */
-module.exports = function defineProperties(object, properties) {
+export default function defineProperties(object, properties) {
   assertIsObject(object);
   const props = toObject(properties);
   forEach(getKeys(props), function(property) {
@@ -48,4 +49,4 @@ module.exports = function defineProperties(object, properties) {
   });
 
   return object;
-};
+}
