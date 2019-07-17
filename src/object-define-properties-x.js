@@ -14,7 +14,7 @@ import getKeys from 'get-own-enumerable-keys-x';
  * properties to be defined or modified.
  * @returns {object} The object that was passed to the function.
  */
-export default function defineProperties(object, properties) {
+const defineProperties = function defineProperties(object, properties) {
   assertIsObject(object);
   const props = toObject(properties);
   forEach(getKeys(props), (property) => {
@@ -24,4 +24,6 @@ export default function defineProperties(object, properties) {
   });
 
   return object;
-}
+};
+
+export default defineProperties;

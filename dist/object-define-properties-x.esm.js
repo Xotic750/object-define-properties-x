@@ -16,7 +16,7 @@ import getKeys from 'get-own-enumerable-keys-x';
  * @returns {object} The object that was passed to the function.
  */
 
-export default function defineProperties(object, properties) {
+var defineProperties = function defineProperties(object, properties) {
   var _this = this;
 
   assertIsObject(object);
@@ -29,6 +29,8 @@ export default function defineProperties(object, properties) {
     }
   }.bind(this));
   return object;
-}
+};
+
+export default defineProperties;
 
 //# sourceMappingURL=object-define-properties-x.esm.js.map
