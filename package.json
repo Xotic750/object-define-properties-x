@@ -1,6 +1,6 @@
 {
   "name": "object-define-properties-x",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "Sham for Object.defineProperties",
   "homepage": "https://github.com/Xotic750/object-define-properties-x",
   "author": {
@@ -49,11 +49,11 @@
     "url": "https://github.com/Xotic750/object-define-properties-x/issues"
   },
   "dependencies": {
-    "array-for-each-x": "^3.0.10",
-    "assert-is-object-x": "^3.0.7",
-    "get-own-enumerable-keys-x": "^2.0.8",
-    "object-define-property-x": "^5.0.7",
-    "to-object-x": "^2.0.10"
+    "array-for-each-x": "^3.0.11",
+    "assert-is-object-x": "^3.0.8",
+    "get-own-enumerable-keys-x": "^2.0.9",
+    "object-define-property-x": "^5.0.8",
+    "to-object-x": "^2.0.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
