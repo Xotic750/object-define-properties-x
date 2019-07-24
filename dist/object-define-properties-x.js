@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-24T00:50:39.278Z",
+  "date": "2019-07-24T16:58:39.975Z",
   "describe": "",
   "description": "Sham for Object.defineProperties",
   "file": "object-define-properties-x.js",
   "hash": "8860020c939482a36dc8",
   "license": "MIT",
-  "version": "5.0.8"
+  "version": "5.0.9"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
