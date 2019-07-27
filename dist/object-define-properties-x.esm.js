@@ -1,10 +1,9 @@
-function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
-
 import forEach from 'array-for-each-x';
-import defineProperty from 'object-define-property-x';
+import $defineProperty from 'object-define-property-x';
 import toObject from 'to-object-x';
 import assertIsObject from 'assert-is-object-x';
 import getKeys from 'get-own-enumerable-keys-x';
+export var defineProperty = $defineProperty;
 /**
  * This method defines new or modifies existing properties directly on an
  * object, returning the object.
@@ -17,17 +16,13 @@ import getKeys from 'get-own-enumerable-keys-x';
  */
 
 var defineProperties = function defineProperties(object, properties) {
-  var _this = this;
-
   assertIsObject(object);
   var props = toObject(properties);
-  forEach(getKeys(props), function (property) {
-    _newArrowCheck(this, _this);
-
+  forEach(getKeys(props), function defineProp(property) {
     if (property !== '__proto__') {
-      defineProperty(object, property, props[property]);
+      $defineProperty(object, property, props[property]);
     }
-  }.bind(this));
+  });
   return object;
 };
 

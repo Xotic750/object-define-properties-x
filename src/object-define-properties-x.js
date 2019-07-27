@@ -1,8 +1,10 @@
 import forEach from 'array-for-each-x';
-import defineProperty from 'object-define-property-x';
+import $defineProperty from 'object-define-property-x';
 import toObject from 'to-object-x';
 import assertIsObject from 'assert-is-object-x';
 import getKeys from 'get-own-enumerable-keys-x';
+
+export const defineProperty = $defineProperty;
 
 /**
  * This method defines new or modifies existing properties directly on an
@@ -17,9 +19,9 @@ import getKeys from 'get-own-enumerable-keys-x';
 const defineProperties = function defineProperties(object, properties) {
   assertIsObject(object);
   const props = toObject(properties);
-  forEach(getKeys(props), (property) => {
+  forEach(getKeys(props), function defineProp(property) {
     if (property !== '__proto__') {
-      defineProperty(object, property, props[property]);
+      $defineProperty(object, property, props[property]);
     }
   });
 
