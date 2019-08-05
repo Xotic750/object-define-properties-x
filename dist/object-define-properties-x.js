@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-05T21:22:11.131Z",
+  "date": "2019-08-05T21:39:57.620Z",
   "describe": "",
   "description": "Sham for Object.defineProperties",
   "file": "object-define-properties-x.js",
-  "hash": "f788df6f0acc935bbd7d",
+  "hash": "907f034fd674e5afadc2",
   "license": "MIT",
-  "version": "5.0.16"
+  "version": "5.0.17"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1998,7 +1998,7 @@ var array_for_each_x_esm_test2 = function test2() {
   var _this2 = this;
 
   var spy = '';
-  var res = attempt_x_esm.call(to_boolean_x_esm('abc'), nativeForEach, function (item) {
+  var res = attempt_x_esm.call(to_object_x_esm('abc'), nativeForEach, function (item) {
     array_for_each_x_esm_newArrowCheck(this, _this2);
 
     spy += item;
