@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-20T10:01:49.577Z",
+  "date": "2019-08-20T13:48:31.661Z",
   "describe": "",
   "description": "Sham for Object.defineProperties",
   "file": "object-define-properties-x.js",
